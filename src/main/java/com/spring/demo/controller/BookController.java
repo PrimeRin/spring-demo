@@ -2,6 +2,7 @@ package com.spring.demo.controller;
 
 import com.spring.demo.model.Book;
 import com.spring.demo.repository.BookRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +31,9 @@ public class BookController {
     }
 
     @PostMapping
-    public Book createBook(@RequestBody Book book) {
-        return bookRepository.save(book);
+    public ResponseEntity<Book> createBook(@RequestBody Book book) {
+        Book savedBook = bookRepository.save(book);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedBook); // Return 201 Created with the saved book
     }
 
     @PutMapping("/{id}")
