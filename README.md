@@ -54,3 +54,9 @@ Content-Type: application/json
 ```bash
 DELETE http://localhost:8081/api/books/{id}
 ```
+
+## **Unit Test the API Using Junit**
+You can run JUnit 5 tests using the following methods:
+```bash
+mvn test
+```
