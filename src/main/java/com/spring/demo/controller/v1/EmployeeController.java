@@ -1,4 +1,4 @@
-package com.spring.demo.controller;
+package com.spring.demo.controller.v1;
 
 import com.spring.demo.dto.EmployeeDto;
 import com.spring.demo.service.EmployeeService;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/employee")
+@RequestMapping("/api/v1/employee")
 public class EmployeeController {
 
     private EmployeeService employeeService;
