@@ -1,17 +1,40 @@
 package com.spring.demo.service;
 
 import com.spring.demo.dto.EmployeeDto;
-
+import com.spring.demo.service.employee.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
-public interface EmployeeService {
-    EmployeeDto createEmployee(EmployeeDto employeeDto);
+@Service
+@AllArgsConstructor
+@NoArgsConstructor
+public class EmployeeService {
+    private CreateEmployee createEmployee;
+    private DeleteEmployeeById deleteEmployeeById;
+    private GetEmployeeById getEmployeeById;
+    private GetAllEmployee getAllEmployee;
+    private UpdateEmployee updateEmployee;
 
-    EmployeeDto getEmployeeById(Long employeeId);
+    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+        return  createEmployee.createEmployee(employeeDto);
+    }
 
-    List<EmployeeDto> getAllEmployee();
+    public List<EmployeeDto> getAllEmployee() {
+       return getAllEmployee.getAllEmployee();
+    }
 
-    EmployeeDto updateEmployee(Long employeeId, EmployeeDto updatedEmployee);
+    public void deleteEmployee(Long employeeId) {
+        deleteEmployeeById.deleteEmployee(employeeId);
+    }
 
-    void deleteEmployee(Long employeeId);
+    public EmployeeDto getEmployeeById(Long employeeId) {
+        return getEmployeeById.getEmployeeById(employeeId);
+    }
+
+    public EmployeeDto updateEmployee(Long employeeId, EmployeeDto updateEmployeeDto) {
+        return updateEmployee.updateEmployee(employeeId, updateEmployeeDto);
+    }
+
 }
