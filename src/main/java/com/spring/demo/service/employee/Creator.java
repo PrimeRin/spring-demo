@@ -7,18 +7,15 @@ import com.spring.demo.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 @AllArgsConstructor
-public class GetAllEmployee {
+public class Creator {
 
     private EmployeeRepository employeeRepository;
 
-    public List<EmployeeDto> getAllEmployee() {
-        List<Employee> employees = employeeRepository.findAll();
-        return employees.stream().map((employee) -> EmployeeMapper.mapToEmployeeDto(employee))
-                .collect(Collectors.toList());
+    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+        Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
+        Employee saveEmployee = employeeRepository.save(employee);
+        return EmployeeMapper.mapToEmployeeDto(saveEmployee);
     }
 }

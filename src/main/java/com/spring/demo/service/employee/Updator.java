@@ -10,15 +10,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class GetEmployeeById {
+public class Updator {
 
     private EmployeeRepository employeeRepository;
 
-    public EmployeeDto getEmployeeById(Long employeeId) {
+    public EmployeeDto updateEmployee(Long employeeId, EmployeeDto updateEmployee) {
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Employee does not exist with given id : " + employeeId));
+                        new ResourceNotFoundException("Employee Not found with given id: " + employeeId)
+                );
 
-        return EmployeeMapper.mapToEmployeeDto(employee);
+        employee.setFirstName(updateEmployee.getFirstName());
+        employee.setLastName(updateEmployee.getLastName());
+        employee.setEmail(updateEmployee.getEmail());
+
+        Employee updatedEmployee = employeeRepository.save(employee);
+        return EmployeeMapper.mapToEmployeeDto(updatedEmployee);
     }
 }

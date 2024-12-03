@@ -9,30 +9,29 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class EmployeeService {
-    private CreateEmployee createEmployee;
-    private DeleteEmployeeById deleteEmployeeById;
-    private GetEmployeeById getEmployeeById;
-    private GetAllEmployee getAllEmployee;
-    private UpdateEmployee updateEmployee;
+    private Creator employeeCreator;
+    private Deletor employeeDeletor;
+    private Gettor employeeGettor;
+    private Updator employeeUpdator;
 
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
-        return  createEmployee.createEmployee(employeeDto);
+        return  employeeCreator.createEmployee(employeeDto);
     }
 
     public List<EmployeeDto> getAllEmployee() {
-       return getAllEmployee.getAllEmployee();
+       return employeeGettor.getAllEmployee();
     }
 
     public void deleteEmployee(Long employeeId) {
-        deleteEmployeeById.deleteEmployee(employeeId);
+        employeeDeletor.deleteEmployee(employeeId);
     }
 
     public EmployeeDto getEmployeeById(Long employeeId) {
-        return getEmployeeById.getEmployeeById(employeeId);
+        return employeeGettor.getEmployeeById(employeeId);
     }
 
     public EmployeeDto updateEmployee(Long employeeId, EmployeeDto updateEmployeeDto) {
-        return updateEmployee.updateEmployee(employeeId, updateEmployeeDto);
+        return employeeUpdator.updateEmployee(employeeId, updateEmployeeDto);
     }
 
 }

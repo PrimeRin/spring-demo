@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class DeleteEmployeeById {
+public class Deletor {
 
     private EmployeeRepository employeeRepository;
 
