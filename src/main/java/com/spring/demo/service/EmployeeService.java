@@ -3,13 +3,11 @@ package com.spring.demo.service;
 import com.spring.demo.dto.EmployeeDto;
 import com.spring.demo.service.employee.*;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class EmployeeService {
     private CreateEmployee createEmployee;
     private DeleteEmployeeById deleteEmployeeById;

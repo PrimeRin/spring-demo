@@ -6,10 +6,10 @@ import com.spring.demo.mapper.EmployeeMapper;
 import com.spring.demo.model.Employee;
 import com.spring.demo.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class UpdateEmployee {
 
     private EmployeeRepository employeeRepository;
