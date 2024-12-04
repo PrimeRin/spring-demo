@@ -11,12 +11,15 @@ public class TaskProducer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    // If you only know the queue name, use the queue name as the routing key
-    @Value("${rabbitmq.queue-name}")
-    private String queueName;
+    // This will be injected with queue name from properties
+    @Value("${rabbitmq.exchange}")
+    private String exchange;
+
+    @Value("${rabbitmq.routing}")
+    private String routingKey;
 
     public void sendTask(String task) {
-        // Use the queue name as the routing key
-        rabbitTemplate.convertAndSend("", queueName, task);
+        // Send the task message to the RabbitMQ exchange with routing key
+        rabbitTemplate.convertAndSend(exchange, routingKey, task);
     }
 }
